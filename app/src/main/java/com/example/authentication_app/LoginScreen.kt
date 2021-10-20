@@ -52,14 +52,14 @@ class LoginScreen : AppCompatActivity() {
                     val password: String=binding.inputpass.text.toString().trim() { it <= ' ' }
                     signInGoogle()
                 }
-                }
             }
+        }
 
 
 
 
 
-                }
+    }
 
     private  fun signInGoogle(){
 
@@ -93,17 +93,17 @@ class LoginScreen : AppCompatActivity() {
             if(task.isSuccessful) {
                 Toast.makeText(this@LoginScreen,"You are Logged in Successfully",Toast.LENGTH_LONG).show()
 
-                                    val intent=
-                                            Intent(this@LoginScreen,MainActivity::class.java)
-                                    intent.flags=Intent.FLAG_ACTIVITY_NEW_TASK  or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                                    intent.putExtra("user_id",FirebaseAuth.getInstance().currentUser?.uid)
-                                    intent.putExtra("email_id",email)
-                                    startActivity(intent)
-                                    finish()
+                val intent=
+                    Intent(this@LoginScreen,MainActivity::class.java)
+                intent.flags=Intent.FLAG_ACTIVITY_NEW_TASK  or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                intent.putExtra("user_id",FirebaseAuth.getInstance().currentUser?.uid)
+                intent.putExtra("email_id",email)
+                startActivity(intent)
+                finish()
             }
             else{
-                                   Toast.makeText(this@LoginScreen,task.exception?.message.toString(),Toast.LENGTH_SHORT).show()
-                                }
+                Toast.makeText(this@LoginScreen,task.exception?.message.toString(),Toast.LENGTH_SHORT).show()
+            }
         }
     }
     override fun onStart() {
